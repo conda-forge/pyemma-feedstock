@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %} 
 {% set version = "2.2.7" %}
-{% set sha256 = "4cc5a015e7f6fb49d1d584d942b2108e775c8f5aa66bfe9d2a4c9cbc032b3da6" %}
+{% set sha256 = "6a8ff600d3525ec9695e70f460c9401a58b730ab753be4e4650d7412dc400043" %}
 
 package:
   name: {{ conda_name|lower }}
