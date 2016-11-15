@@ -13,13 +13,13 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   script: python -B setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
   build:
     - cython >=0.20
-    - mdtraj >=1.7
+    - mdtraj >=1.8
     - nose
     - numpy x.x
     - python
@@ -30,7 +30,7 @@ requirements:
     - funcsigs
     - joblib >0.8.4
     - matplotlib
-    - mdtraj >=1.7
+    - mdtraj >=1.8
     - mock
     - msmtools >=1.1.4
     - numpy x.x
