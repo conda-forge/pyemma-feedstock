@@ -9,7 +9,9 @@ Feedstock license: BSD 3-Clause
 
 Summary: PyEMMA (EMMA = Emma’s Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations
 
-PyEMMA (EMMA = Emma’s Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations. In particular, it includes algorithms for estimation, validation and analysis of:
+PyEMMA (EMMA = Emma’s Markov Model Algorithms) is an open source Python/C package
+for analysis of extensive molecular dynamics simulations.
+In particular, it includes algorithms for estimation, validation and analysis of:
   * Clustering and Featurization
   * Markov state models (MSMs)
   * Hidden Markov models (HMMs)
@@ -17,6 +19,18 @@ PyEMMA (EMMA = Emma’s Markov Model Algorithms) is an open source Python/C pack
   * Time-lagged independent component analysis (TICA)
   * Transition Path Theory (TPT)
 
+
+Current build status
+====================
+
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyemma-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pyemma-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyemma-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyemma-feedstock)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pyemma-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pyemma-feedstock/branch/master)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyemma/badges/version.svg)](https://anaconda.org/conda-forge/pyemma)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyemma/badges/downloads.svg)](https://anaconda.org/conda-forge/pyemma)
 
 Installing pyemma
 =================
@@ -38,7 +52,6 @@ It is possible to list all of the versions of `pyemma` available on your platfor
 ```
 conda search pyemma --channel conda-forge
 ```
-
 
 
 About conda-forge
@@ -74,18 +87,6 @@ Terminology
 
 **conda-forge** - the place where the feedstock and smithy live and work to
                   produce the finished article (built conda distributions)
-
-Current build status
-====================
-
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyemma-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pyemma-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyemma-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyemma-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pyemma-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pyemma-feedstock/branch/master)
-
-Current release info
-====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyemma/badges/version.svg)](https://anaconda.org/conda-forge/pyemma)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyemma/badges/downloads.svg)](https://anaconda.org/conda-forge/pyemma)
 
 
 Updating pyemma-feedstock
