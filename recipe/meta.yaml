@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %} 
-{% set version = "2.3" %}
-{% set sha256 = "f7ea0885a00960d5dbfb34b9b29ae977fb134405e6f3196fce2493731d0bbb19" %}
+{% set version = "2.3.2" %}
+{% set sha256 = "7399378652217459a068ce7d20811d3c9ff65154bb5e869e30171cc86c7fdd02" %}
 
 package:
   name: {{ conda_name|lower }}
@@ -18,15 +18,15 @@ build:
 
 requirements:
   build:
-    - cython >=0.20
+    - cython
     - mdtraj >=1.8
     - numpy x.x
     - python
     - setuptools
+
   run:
     - bhmm >=0.6,<0.7
     - decorator >=4.0.0
-    - funcsigs
     - joblib >0.8.4
     - matplotlib
     - mdtraj >=1.8
@@ -40,7 +40,7 @@ requirements:
     - scipy
     - setuptools
     - six >=1.1.0
-    - thermotools >=0.2.3
+    - thermotools >=0.2.5
 
 test:
   imports:
@@ -50,10 +50,10 @@ about:
   home: http://github.com/markovmodel/pyemma
   license: LGPLv3+ 
   license_file: LICENSE.txt
-  summary: 'PyEMMA (EMMA = Emma’s Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations'
+  summary: "PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations"
 
   description: |
-    PyEMMA (EMMA = Emma’s Markov Model Algorithms) is an open source Python/C package
+    PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package
     for analysis of extensive molecular dynamics simulations.
     In particular, it includes algorithms for estimation, validation and analysis of:
       * Clustering and Featurization
