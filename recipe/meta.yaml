@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script: python -B setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -40,7 +40,7 @@ requirements:
     - scipy
     - setuptools
     - six >=1.1.0
-    - thermotools >=0.2.5
+    - thermotools >=0.2.6
 
 test:
   imports:
