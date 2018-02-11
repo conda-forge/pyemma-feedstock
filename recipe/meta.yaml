@@ -1,20 +1,22 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %} 
-{% set version = "2.4" %}
-{% set sha256 = "7e428ad255036bc2ca68c7292dd8aede3aae95d1d95029626326c8edde902a1c" %}
+{% set version = "2.5" %}
+{% set sha256 = "a3ca64a7fac23ce0067a7cfbd7dc93130a7f6d9dc366f3ef9acc7b90e933695f" %}
 
 package:
   name: {{ conda_name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  fn: {{ name }}-{{ version }}.zip
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 0
   script: python -B setup.py install --single-version-externally-managed --record record.txt
+  # skip this, because we would need to built extension with vc14, but ci is configured to use vc9 for py27
+  skip: True  # [win and py27]
 
 requirements:
   build:
@@ -26,19 +28,20 @@ requirements:
     - numpy 1.9.*  # [not (win and (py35 or py36))]
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
+    - toolchain
+    - scipy
   run:
     - bhmm >=0.6,<0.7
     - decorator >=4.0.0
-    - joblib >0.8.4
+    - h5py
     - matplotlib
     - mdtraj >=1.8
     - mock
     - msmtools >=1.2
-    - numpy >=1.9  # [not (win and (py35 or py36))]
-    - numpy >=1.9  # [win and py35]
-    - numpy >=1.11  # [win and py36]
-    # unpin on release 2.5
-    - progress_reporter <1.4
+    - numpy >=1.9,<1.14  # [not (win and (py35 or py36))]
+    - numpy >=1.9,<1.14  # [win and py35]
+    - numpy >=1.11,<1.14  # [win and py36]
+    - pathos
     - psutil >=3.1.1
     - python
     - pyyaml
@@ -46,6 +49,7 @@ requirements:
     - setuptools
     - six >=1.1.0
     - thermotools >=0.2.6
+    - tqdm
 
 test:
   imports:
