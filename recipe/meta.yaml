@@ -15,6 +15,8 @@ source:
 build:
   number: 0
   script: python -B setup.py install --single-version-externally-managed --record record.txt
+  # skip this, because we would need to built extension with vc14, but ci is configured to use vc9 for py27
+  skip: True # [ win32 andd py27 ]
 
 requirements:
   build:
