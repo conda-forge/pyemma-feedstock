@@ -1,15 +1,15 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %} 
-{% set version = "2.5" %}
-{% set sha256 = "a3ca64a7fac23ce0067a7cfbd7dc93130a7f6d9dc366f3ef9acc7b90e933695f" %}
+{% set version = "2.5.1" %}
+{% set sha256 = "1ec0b78f76d6eae2273e582748afdd762d8628ddc39ff64195984190c266b281" %}
 
 package:
   name: {{ conda_name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.zip
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
