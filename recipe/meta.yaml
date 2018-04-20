@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script: python -B setup.py install --single-version-externally-managed --record record.txt
   # skip this, because we would need to built extension with vc14, but ci is configured to use vc9 for py27
   skip: True  # [win and py27]
@@ -49,7 +49,8 @@ requirements:
     - setuptools
     - six >=1.1.0
     - thermotools >=0.2.6
-    - tqdm
+    # tqdm 4.23 changed api, we need a new release to fix #markovmodel/pyemma#1292
+    - tqdm <4.23
 
 test:
   imports:
