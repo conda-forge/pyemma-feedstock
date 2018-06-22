@@ -1,81 +1,88 @@
-{% set conda_name = "pyemma" %}
-{% set name = "pyEMMA" %} 
-{% set version = "2.5.2" %}
-{% set sha256 = "101fd8f2fa51d7eae4b4aae10470557a8a9a09e625b91a75b6051d72d2956680" %}
-
 package:
-  name: {{ conda_name|lower }}
-  version: {{ version }}
+  name: pyemma-dev
+  # version number: [base tag]+[commits-upstream]_[git_hash]
+  # eg. 2.0+0_g8824162
+  version: "0" 
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  git_url: https://github.com/marscher/pyemma
+  git_rev: packaging
 
 build:
-  number: 1
-  script: python -B setup.py install --single-version-externally-managed --record record.txt
-  # skip this, because we would need to built extension with vc14, but ci is configured to use vc9 for py27
-  skip: True  # [win and py27]
+  script_env:
+   - CIRCLE_TEST_REPORTS
+   - OMP_NUM_THREADS
+   - PYEMMA_NJOBS
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 0
 
 requirements:
   build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - llvm-openmp # [osx]
+    - intel-openmp # [osx]
+
+  host:
     - cython
-    - mdtraj >=1.8
-    - python
-    - setuptools
+    - intel-openmp # [osx]
+    - mdtraj
     # actually we could build with np18, but fastcluster (dep of mdtraj, we link against) is only avail for 1.9
     - numpy 1.9.*  # [not (win and (py35 or py36))]
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
-    - toolchain
+    - python
     - scipy
+    - setuptools
+
+    #- toolchain, can not use because of:
+    #gcc: error: unrecognized command line option ‘-fstack-protector-strong’
+    #gcc: error: unrecognized command line option ‘-fno-plt’
+
   run:
-    - bhmm >=0.6,<0.7
+    - bhmm >=0.6.3,<0.7
     - decorator >=4.0.0
     - h5py
+    - intel-openmp # [osx]
     - matplotlib
     - mdtraj >=1.8
-    - mock
+    - mock # TODO: remove when py3k only.
     - msmtools >=1.2
-    - numpy >=1.9,<1.14  # [not (win and (py35 or py36))]
-    - numpy >=1.9,<1.14  # [win and py35]
-    - numpy >=1.11,<1.14  # [win and py36]
+    - numpy >=1.9  # [not (win and (py35 or py36))]
+    - numpy >=1.9  # [win and py35]
+    - numpy >=1.11 # [win and py36]
     - pathos
-    - psutil >=3.1.1
+    - psutil >3.1
     - python
     - pyyaml
     - scipy
     - setuptools
-    - six >=1.1.0
+    - six >=1.10
     - thermotools >=0.2.6
-    # tqdm 4.23 changed api, we need a new release to fix #markovmodel/pyemma#1292
-    - tqdm <4.23
+    - tqdm >=4.23
 
 test:
-  imports:
-    - pyemma
+  source_files:
+    - conftest.py
+    - setup.cfg
+  files:
+    - matplotlibrc
+  requires:
+    - pytest
+    - pytest-cov
+    - coverage
+   # TODO: disabled on win64, until https://bugs.python.org/issue31701 is fixed.
+    - pytest-faulthandler # [not win]
+    - pytest-xdist
+    - scikit-learn
+    # https://github.com/Frozenball/pytest-sugar/issues/124
+    #- pytest-sugar
 
 about:
-  home: http://github.com/markovmodel/pyemma
-  license: LGPLv3+ 
-  license_file: LICENSE.txt
-  summary: "PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations"
-
-  description: |
-    PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package
-    for analysis of extensive molecular dynamics simulations.
-    In particular, it includes algorithms for estimation, validation and analysis of:
-      * Clustering and Featurization
-      * Markov state models (MSMs)
-      * Hidden Markov models (HMMs)
-      * Multi-ensemble Markov models (MEMMs)
-      * Time-lagged independent component analysis (TICA)
-      * Transition Path Theory (TPT)
-  doc_url: http://emma-project.org
-  dev_url: https://github.com/markovmodel/pyemma
+  home: http://emma-project.org
+  license: GNU Lesser Public v3+
+  summary: "EMMA: Emma's Markov Model Algorithms"
 
 extra:
   recipe-maintainers:
-    - franknoe
-    - marscher
+   - marscher
