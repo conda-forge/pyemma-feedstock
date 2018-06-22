@@ -1,56 +1,49 @@
-About pyemma
-============
+About pyemma-dev
+================
 
-Home: http://github.com/markovmodel/pyemma
+Home: http://emma-project.org
 
-Package license: LGPLv3+
+Package license: GNU Lesser Public License v3+
 
 Feedstock license: BSD 3-Clause
 
-Summary: PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations
+Summary: EMMA: Emma's Markov Model Algorithms
 
-PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package
-for analysis of extensive molecular dynamics simulations.
-In particular, it includes algorithms for estimation, validation and analysis of:
-  * Clustering and Featurization
-  * Markov state models (MSMs)
-  * Hidden Markov models (HMMs)
-  * Multi-ensemble Markov models (MEMMs)
-  * Time-lagged independent component analysis (TICA)
-  * Transition Path Theory (TPT)
 
 
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyemma-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pyemma-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyemma-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyemma-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pyemma-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pyemma-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/pyemma-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/pyemma-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/pyemma-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/pyemma-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/pyemma-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/pyemma-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyemma/badges/version.svg)](https://anaconda.org/conda-forge/pyemma)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyemma/badges/downloads.svg)](https://anaconda.org/conda-forge/pyemma)
 
-Installing pyemma
-=================
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pyemma--dev-green.svg)](https://anaconda.org/conda-forge/pyemma-dev) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyemma-dev.svg)](https://anaconda.org/conda-forge/pyemma-dev) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyemma-dev.svg)](https://anaconda.org/conda-forge/pyemma-dev) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyemma-dev.svg)](https://anaconda.org/conda-forge/pyemma-dev) |
 
-Installing `pyemma` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing pyemma-dev
+=====================
+
+Installing `pyemma-dev` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `pyemma` can be installed with:
+Once the `conda-forge` channel has been enabled, `pyemma-dev` can be installed with:
 
 ```
-conda install pyemma
+conda install pyemma-dev
 ```
 
-It is possible to list all of the versions of `pyemma` available on your platform with:
+It is possible to list all of the versions of `pyemma-dev` available on your platform with:
 
 ```
-conda search pyemma --channel conda-forge
+conda search pyemma-dev --channel conda-forge
 ```
 
 
@@ -90,17 +83,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating pyemma-feedstock
-=========================
+Updating pyemma-dev-feedstock
+=============================
 
-If you would like to improve the pyemma recipe or build a new
+If you would like to improve the pyemma-dev recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/pyemma-feedstock are
+Note that all branches in the conda-forge/pyemma-dev-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
