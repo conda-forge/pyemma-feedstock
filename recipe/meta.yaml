@@ -13,44 +13,55 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
-  script: python -B setup.py install --single-version-externally-managed --record record.txt
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
   # skip this, because we would need to built extension with vc14, but ci is configured to use vc9 for py27
   skip: True  # [win and py27]
 
 requirements:
   build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - llvm-openmp # [osx]
+    - intel-openmp # [osx]
+
+  host:
     - cython
-    - mdtraj >=1.8
-    - python
-    - setuptools
+    - intel-openmp # [osx]
+    - mdtraj
     # actually we could build with np18, but fastcluster (dep of mdtraj, we link against) is only avail for 1.9
     - numpy 1.9.*  # [not (win and (py35 or py36))]
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
-    - toolchain
+    - python
     - scipy
+    - setuptools
+
+    #- toolchain, can not use because of:
+    #gcc: error: unrecognized command line option ‘-fstack-protector-strong’
+    #gcc: error: unrecognized command line option ‘-fno-plt’
+
   run:
-    - bhmm >=0.6,<0.7
+    - bhmm >=0.6.3,<0.7
     - decorator >=4.0.0
     - h5py
+    - intel-openmp # [osx]
     - matplotlib
     - mdtraj >=1.8
-    - mock
+    - mock # TODO: remove when py3k only.
     - msmtools >=1.2
-    - numpy >=1.9,<1.14  # [not (win and (py35 or py36))]
-    - numpy >=1.9,<1.14  # [win and py35]
-    - numpy >=1.11,<1.14  # [win and py36]
+    - numpy >=1.9  # [not (win and (py35 or py36))]
+    - numpy >=1.9  # [win and py35]
+    - numpy >=1.11 # [win and py36]
     - pathos
     - psutil >=3.1.1
     - python
     - pyyaml
     - scipy
     - setuptools
-    - six >=1.1.0
+    - six >=1.10
     - thermotools >=0.2.6
-    # tqdm 4.23 changed api, we need a new release to fix #markovmodel/pyemma#1292
-    - tqdm <4.23
+    - tqdm >=4.23
 
 test:
   imports:
