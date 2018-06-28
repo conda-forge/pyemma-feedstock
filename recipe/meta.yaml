@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %} 
-{% set version = "2.5.2" %}
-{% set sha256 = "101fd8f2fa51d7eae4b4aae10470557a8a9a09e625b91a75b6051d72d2956680" %}
+{% set version = "2.5.3" %}
+{% set sha256 = "ec7551f6460d6eb34d7b85005cb395b8c50c4332b95d9c7708433fcbde3f366e" %}
 
 package:
   name: {{ conda_name|lower }}
@@ -13,44 +13,52 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
-  script: python -B setup.py install --single-version-externally-managed --record record.txt
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
   # skip this, because we would need to built extension with vc14, but ci is configured to use vc9 for py27
   skip: True  # [win and py27]
 
 requirements:
   build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - llvm-openmp  # [osx]
+    - intel-openmp  # [osx]
+
+  host:
     - cython
-    - mdtraj >=1.8
-    - python
-    - setuptools
+    - intel-openmp  # [osx]
+    - mdtraj
     # actually we could build with np18, but fastcluster (dep of mdtraj, we link against) is only avail for 1.9
     - numpy 1.9.*  # [not (win and (py35 or py36))]
     - numpy 1.9.*  # [win and py35]
     - numpy 1.11.*  # [win and py36]
-    - toolchain
+    - python
     - scipy
+    - setuptools
+    - toolchain
+
   run:
-    - bhmm >=0.6,<0.7
+    - bhmm >=0.6.3,<0.7
     - decorator >=4.0.0
     - h5py
+    - intel-openmp  # [osx]
     - matplotlib
     - mdtraj >=1.8
-    - mock
+    - mock # TODO: remove when py3k only.
     - msmtools >=1.2
-    - numpy >=1.9,<1.14  # [not (win and (py35 or py36))]
-    - numpy >=1.9,<1.14  # [win and py35]
-    - numpy >=1.11,<1.14  # [win and py36]
+    - numpy >=1.9  # [not (win and (py35 or py36))]
+    - numpy >=1.9  # [win and py35]
+    - numpy >=1.11  # [win and py36]
     - pathos
     - psutil >=3.1.1
     - python
     - pyyaml
     - scipy
     - setuptools
-    - six >=1.1.0
+    - six >=1.10
     - thermotools >=0.2.6
-    # tqdm 4.23 changed api, we need a new release to fix #markovmodel/pyemma#1292
-    - tqdm <4.23
+    - tqdm >=4.23
 
 test:
   imports:
