@@ -23,14 +23,16 @@ In particular, it includes algorithms for estimation, validation and analysis of
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyemma-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pyemma-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyemma-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyemma-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pyemma-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pyemma-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/pyemma-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/pyemma-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/pyemma-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/pyemma-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/pyemma-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/pyemma-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyemma/badges/version.svg)](https://anaconda.org/conda-forge/pyemma)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyemma/badges/downloads.svg)](https://anaconda.org/conda-forge/pyemma)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pyemma-green.svg)](https://anaconda.org/conda-forge/pyemma) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyemma.svg)](https://anaconda.org/conda-forge/pyemma) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyemma.svg)](https://anaconda.org/conda-forge/pyemma) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyemma.svg)](https://anaconda.org/conda-forge/pyemma) |
 
 Installing pyemma
 =================
