@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %}
-{% set version = "2.5.3" %}
-{% set sha256 = "ec7551f6460d6eb34d7b85005cb395b8c50c4332b95d9c7708433fcbde3f366e" %}
+{% set version = "2.5.4" %}
+{% set sha256 = "477d19ee98a2aec0467a321901b645c58459f68d51210bccc64a5012d4839537" %}
 
 package:
   name: {{ conda_name|lower }}
@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
   # skip this, because we would need to built extension with vc14, but ci is configured to use vc9 for py27
   skip: True  # [win and py27]
@@ -23,19 +23,11 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - llvm-openmp  # [osx]
-    - intel-openmp  # [osx]
-
-  host:
     - cython
     - intel-openmp  # [osx]
+    - llvm-openmp  # [osx]
     - mdtraj
-    # actually we could build with np18, but fastcluster (dep of mdtraj, we link against) is only avail for 1.9
-    - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
-    - {{ pin_compatible('numpy') }}   # [win and py35]
-    - {{ pin_compatible('numpy') }}   # [win and py36]
+    - numpy
     - python
     - scipy
     - setuptools
@@ -49,9 +41,7 @@ requirements:
     - mdtraj >=1.8
     - mock # TODO: remove when py3k only.
     - msmtools >=1.2
-    - {{ pin_compatible('numpy') }}   # [not (win and (py35 or py36))]
-    - {{ pin_compatible('numpy') }}   # [win and py35]
-    - {{ pin_compatible('numpy') }}   # [win and py36]
+    - {{ pin_compatible('numpy') }}
     - pathos
     - psutil >=3.1.1
     - python
