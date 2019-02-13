@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %}
-{% set version = "2.5.4" %}
-{% set sha256 = "477d19ee98a2aec0467a321901b645c58459f68d51210bccc64a5012d4839537" %}
+{% set version = "2.5.5" %}
+{% set sha256 = "dfadd3f4d3d5019d49175eaa31160b07f17bdafe91180ddc916d25c83b757308" %}
 
 package:
   name: {{ conda_name|lower }}
@@ -15,7 +15,7 @@ source:
     - build_flags.patch
 
 build:
-  number: 1001
+  number: 0
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   # skip this, because we would need to built extension with vc14, but ci is configured to use vc9 for py27
   skip: True  # [win and py27]
