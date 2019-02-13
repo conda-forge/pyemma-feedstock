@@ -1,29 +1,25 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %}
-{% set version = "2.5.4" %}
-{% set sha256 = "477d19ee98a2aec0467a321901b645c58459f68d51210bccc64a5012d4839537" %}
+{% set version = "2.5.5" %}
+{% set sha256 = "dfadd3f4d3d5019d49175eaa31160b07f17bdafe91180ddc916d25c83b757308" %}
 
 package:
   name: {{ conda_name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - build_flags.patch
 
 build:
-  number: 1001
+  number: 1000
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
-  # skip this, because we would need to built extension with vc14, but ci is configured to use vc9 for py27
-  skip: True  # [win and py27]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+
   host:
     - cython
     - intel-openmp  # [osx]
@@ -34,15 +30,17 @@ requirements:
     - pip
     - scipy
     - setuptools
+    - pybind11
 
   run:
     - bhmm >=0.6.3,<0.7
     - decorator >=4.0.0
     - h5py
+    # TODO: there is a dead-lock, when blosc is enabled during hdf5 pickling!
+    #- blosc-hdf5-plugin  # [not win]
     - intel-openmp  # [osx]
     - matplotlib
-    - mdtraj >=1.8
-    - mock # TODO: remove when py3k only.
+    - mdtraj >=1.9.2
     - msmtools >=1.2
     - {{ pin_compatible('numpy') }}
     - pathos
@@ -51,9 +49,11 @@ requirements:
     - pyyaml
     - scipy
     - setuptools
-    - six >=1.10
-    - thermotools >=0.2.6
     - tqdm >=4.23
+
+  # TODO: there is a dead-lock, when blosc is enabled during hdf5 pickling!
+  run_constrained:
+    - blosc-hdf5-plugin >=9999999
 
 test:
   imports:
