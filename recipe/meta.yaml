@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 1001
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   skip: True  # [py27]
 
@@ -51,10 +51,6 @@ requirements:
     - scipy
     - setuptools
     - tqdm >=4.23
-
-  # TODO: there is a dead-lock, when blosc is enabled during hdf5 pickling!
-  run_constrained:
-    - blosc-hdf5-plugin >=9999999
 
 test:
   imports:
