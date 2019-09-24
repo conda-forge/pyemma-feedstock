@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %}
-{% set version = "2.5.6" %}
-{% set sha256 = "d06c3c4c58f1aff8dad0684649a00bec022dec50bd18c8e68cdc7faf8ae4e848" %}
+{% set version = "2.5.7" %}
+{% set sha256 = "82a3b09a48e4b51ef4cc0634b163f3e5856fc94c32b6b1f78f6c1f421da292df" %}
 
 package:
   name: {{ conda_name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1001
+  number: 0
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   skip: True  # [py27]
 
