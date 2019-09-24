@@ -50,7 +50,7 @@ requirements:
     - pyyaml
     - scipy
     - setuptools
-    - tqdm >=4.23
+    - tqdm >=4.36.1
 
 test:
   imports:
