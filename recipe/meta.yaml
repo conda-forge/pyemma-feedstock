@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   skip: True  # [py27]
 
@@ -40,7 +40,7 @@ requirements:
     # TODO: there is a dead-lock, when blosc is enabled during hdf5 pickling!
     #- blosc-hdf5-plugin  # [not win]
     - intel-openmp  # [osx]
-    - matplotlib
+    - matplotlib-base
     - mdtraj >=1.9.2
     - msmtools >=1.2
     - {{ pin_compatible('numpy') }}
