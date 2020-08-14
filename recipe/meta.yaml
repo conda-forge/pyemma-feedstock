@@ -58,7 +58,7 @@ test:
 
 about:
   home: http://github.com/markovmodel/pyemma
-  license: LGPLv3+
+  license: LGPL-3.0-or-later
   license_file: LICENSE.txt
   summary: "PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations"
 
