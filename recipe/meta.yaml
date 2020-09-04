@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   skip: True  # [py27]
 
@@ -58,7 +58,7 @@ test:
 
 about:
   home: http://github.com/markovmodel/pyemma
-  license: LGPLv3+
+  license: LGPL-3.0-or-later
   license_file: LICENSE.txt
   summary: "PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations"
 
