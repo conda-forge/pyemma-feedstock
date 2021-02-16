@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 5
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   skip: True  # [py27 or python_impl == "pypy"]
 
@@ -42,7 +42,7 @@ requirements:
     - intel-openmp  # [osx]
     - matplotlib-base
     - mdtraj >=1.9.2
-    - msmtools >=1.2
+    - msmtools >=1.2.6
     - {{ pin_compatible('numpy') }}
     - pathos
     - psutil >=3.1.1
