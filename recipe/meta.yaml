@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %}
-{% set version = "2.5.7" %}
-{% set sha256 = "82a3b09a48e4b51ef4cc0634b163f3e5856fc94c32b6b1f78f6c1f421da292df" %}
+{% set version = "2.5.8" %}
+{% set sha256 = "999d02e52b7cdaf634b53f3e475928e0623768eefddca2824ba63362305d11d7" %}
 
 package:
   name: {{ conda_name|lower }}
@@ -12,9 +12,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 6
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
-  skip: True  # [py27 or python_impl == "pypy"]
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  skip: true  # [py27 or python_impl == "pypy"]
 
 requirements:
   build:
@@ -62,7 +62,7 @@ about:
   home: http://github.com/markovmodel/pyemma
   license: LGPL-3.0-or-later
   license_file: LICENSE.txt
-  summary: "PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations"
+  summary: PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package for analysis of extensive molecular dynamics simulations
 
   description: |
     PyEMMA (EMMA = Emma's Markov Model Algorithms) is an open source Python/C package
