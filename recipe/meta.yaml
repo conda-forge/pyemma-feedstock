@@ -32,6 +32,7 @@ requirements:
     - scipy
     - setuptools
     - pybind11
+    - deeptime
 
   run:
     - bhmm >=0.6.3,<0.7
@@ -51,6 +52,7 @@ requirements:
     - scipy
     - setuptools
     - tqdm >=4.36.1
+    - deeptime
 
 test:
   imports:
