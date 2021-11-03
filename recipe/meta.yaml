@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   skip: true  # [py27 or python_impl == "pypy"]
 
@@ -32,7 +32,7 @@ requirements:
     - scipy
     - setuptools
     - pybind11
-    - deeptime
+    - deeptime <0.3.0
 
   run:
     - bhmm >=0.6.3,<0.7
@@ -52,7 +52,7 @@ requirements:
     - scipy
     - setuptools
     - tqdm >=4.36.1
-    - deeptime
+    - deeptime <0.3.0
 
 test:
   imports:
