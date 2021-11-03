@@ -23,7 +23,6 @@ requirements:
 
   host:
     - cython
-    - intel-openmp  # [osx]
     - llvm-openmp  # [osx]
     - mdtraj
     - numpy
