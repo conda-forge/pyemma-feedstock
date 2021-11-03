@@ -12,9 +12,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
-  skip: true  # [py27 or python_impl == "pypy"]
+  skip: true  # [python_impl == "pypy"]
 
 requirements:
   build:
@@ -23,7 +23,6 @@ requirements:
 
   host:
     - cython
-    - intel-openmp  # [osx]
     - llvm-openmp  # [osx]
     - mdtraj
     - numpy
@@ -32,7 +31,7 @@ requirements:
     - scipy
     - setuptools
     - pybind11
-    - deeptime
+    - deeptime <0.3.0
 
   run:
     - bhmm >=0.6.3,<0.7
@@ -40,7 +39,7 @@ requirements:
     - h5py
     # TODO: there is a dead-lock, when blosc is enabled during hdf5 pickling!
     #- blosc-hdf5-plugin  # [not win]
-    - intel-openmp  # [osx]
+    - llvm-openmp  # [osx]
     - matplotlib-base
     - mdtraj >=1.9.2
     - msmtools >=1.2.6
@@ -52,7 +51,7 @@ requirements:
     - scipy
     - setuptools
     - tqdm >=4.36.1
-    - deeptime
+    - deeptime <0.3.0
 
 test:
   imports:
