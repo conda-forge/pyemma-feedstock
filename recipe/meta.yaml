@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %}
-{% set version = "2.5.9" %}
-{% set sha256 = "481d475c101b421bda7be6f3b48289e5b1eb762d2a477271a70d920bbc7907be" %}
+{% set version = "2.5.10" %}
+{% set sha256 = "23a5d719cbc7df8355c6e7533aeade8499964c465cc5578697821eb9863e15f4" %}
 
 package:
   name: {{ conda_name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   skip: true  # [python_impl == "pypy"]
 
@@ -31,7 +31,7 @@ requirements:
     - scipy
     - setuptools
     - pybind11
-    - deeptime <0.3.0
+    - deeptime >=0.3.0
 
   run:
     - bhmm >=0.6.3,<0.7
@@ -51,7 +51,7 @@ requirements:
     - scipy
     - setuptools
     - tqdm >=4.36.1
-    - deeptime <0.3.0
+    - deeptime >=0.3.0
 
 test:
   imports:
