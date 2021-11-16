@@ -51,7 +51,7 @@ requirements:
     - scipy
     - setuptools
     - tqdm >=4.36.1
-    - deeptime <0.3.0
+    - deeptime >=0.3.0
 
 test:
   imports:
