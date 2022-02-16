@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %}
-{% set version = "2.5.10" %}
-{% set sha256 = "23a5d719cbc7df8355c6e7533aeade8499964c465cc5578697821eb9863e15f4" %}
+{% set version = "2.5.11" %}
+{% set sha256 = "8fe83b1256b7f7d920d3d3e98fbcfe993f299acfccd5473e0ea4ae20b86f4dc0" %}
 
 package:
   name: {{ conda_name|lower }}
@@ -31,7 +31,7 @@ requirements:
     - scipy
     - setuptools
     - pybind11
-    - deeptime >=0.3.0
+    - deeptime >=0.4.0
 
   run:
     - bhmm >=0.6.3,<0.7
