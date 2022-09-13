@@ -1,7 +1,7 @@
 {% set conda_name = "pyemma" %}
 {% set name = "pyEMMA" %}
-{% set version = "2.5.11" %}
-{% set sha256 = "c71c4cbc1e20ce859ba5c3fbe4283eb472101f63f283b91fb2c4f05843ed84ac" %}
+{% set version = "2.5.12" %}
+{% set sha256 = "0916b33151c7a3e945b3810cf660eb13bb371718355cced808f510aef7da275d" %}
 
 package:
   name: {{ conda_name|lower }}
@@ -31,10 +31,9 @@ requirements:
     - scipy
     - setuptools
     - pybind11
-    - deeptime >=0.4.0
+    - deeptime >=0.4.3
 
   run:
-    - bhmm >=0.6.3,<0.7
     - decorator >=4.0.0
     - h5py
     # TODO: there is a dead-lock, when blosc is enabled during hdf5 pickling!
@@ -42,7 +41,6 @@ requirements:
     - llvm-openmp  # [osx]
     - matplotlib-base
     - mdtraj >=1.9.2
-    - msmtools >=1.2.6
     - {{ pin_compatible('numpy') }}
     - pathos
     - psutil >=3.1.1
@@ -51,7 +49,7 @@ requirements:
     - scipy
     - setuptools
     - tqdm >=4.36.1
-    - deeptime >=0.3.0
+    - deeptime >=0.4.3
 
 test:
   imports:
